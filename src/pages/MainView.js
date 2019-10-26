@@ -5,7 +5,8 @@ import InvoiceTable from '../components/InvoiceTable';
 export default class MainView extends Component {
     render() {
         return (
-            <div>
+            <div className="main-view">
+                <h2 className="main-view__title">Invoices</h2>
                 <ActionsTab />
                 <InvoiceTable />
             </div>

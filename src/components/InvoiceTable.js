@@ -58,13 +58,12 @@ export default class InvoiceTable extends Component {
                 Cell: props => {
                     return (
                         <div>
-                            <button
-                                onClick={() => console.log('Edit', props)}
-                            ><Link to={{
+                            <button className="button button_edit">
+                                <Link className="link" to={{
                                 pathname: `/editing`,
                                 props: props.original
                             }} >Edit</Link></button>
-                            <button
+                            <button className="button button_delete"
                                 onClick={() => this.deleteInvoice(props.original._id)}
                             >Delete</button>
                         </div>
@@ -74,11 +73,13 @@ export default class InvoiceTable extends Component {
         ];
 
         return (
-            <div>
+            <div className="invoice-tab tab">
                 <h3>Invoices</h3>
                 <ReactTable 
                     data={invoices}
                     columns={columns}
+                    showPagination={false}
+                    pageSize={(invoices.length > 10) ? 10 : invoices.length}
                 />
             </div>
         )

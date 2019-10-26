@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 export default class ActionsTab extends Component {
     render() {
         return (
-            <div>
+            <div className="tab">
                 <h4>Actions</h4>
-                <button type="submit"><Link to='/creation'>Add new</Link></button>
+                <button className="button button_add" type="submit"><Link className="link" to='/creation'>Add new</Link></button>
             </div>
         )
     }
