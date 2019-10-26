@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ActionsTab from '../components/ActionsTab';
 import InvoiceTable from '../components/InvoiceTable';
 
-export default class MainView extends Component {
-    render() {
-        return (
-            <div className="main-view">
-                <h2 className="main-view__title">Invoices</h2>
-                <ActionsTab />
-                <InvoiceTable />
-            </div>
-        )
-    }
-}
+const MainView = () => (
+    <div>
+        <h2 className="title">Invoices</h2>
+        <ActionsTab />
+        <InvoiceTable />
+    </div>
+);
+
+export default MainView;

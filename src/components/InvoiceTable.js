@@ -8,7 +8,7 @@ export default class InvoiceTable extends Component {
         super(props);
 
         this.state = {
-            invoices: []
+            invoices: [],
         };
     }
 
@@ -22,66 +22,76 @@ export default class InvoiceTable extends Component {
             .then(json => {
                 this.setState({
                     invoices: json,
-                })
+                });
             })
             .catch(error => console.log('Error: ', error));
     }
 
     deleteInvoice(id) {
-        fetch(`http://localhost:3004/data/${id}`, { method: 'delete'})
+        fetch(`http://localhost:3004/data/${id}`, { method: 'delete' })
             .then(res => res.json())
             .catch(error => console.log('Error: ', error))
             .then(() => this.getInvoiceTableData());
     }
 
     render() {
-        let { invoices } = this.state;
+        const { invoices } = this.state;
         const columns = [
             {
                 Header: 'Create',
-                accessor: 'date_created'
+                accessor: 'date_created',
             },
             {
                 Header: 'No',
-                accessor: 'number'
+                accessor: 'number',
             },
             {
                 Header: 'Supply',
-                accessor: 'date_supplied'
+                accessor: 'date_supplied',
             },
             {
                 Header: 'Comment',
-                accessor: 'comment'
+                accessor: 'comment',
             },
             {
                 Header: 'Actions',
                 Cell: props => {
                     return (
-                        <div>
-                            <button className="button button_edit">
-                                <Link className="link" to={{
-                                pathname: `/editing`,
-                                props: props.original
-                            }} >Edit</Link></button>
-                            <button className="button button_delete"
+                        <div className="table-actions">
+                            <button type="button" className="button button_edit">
+                                <Link
+                                    className="link"
+                                    to={{
+                                        pathname: `/editing`,
+                                        props: props.original,
+                                    }}
+                                >
+                                    Edit
+                                </Link>
+                            </button>
+                            <button
+                                type="button"
+                                className="button button_delete"
                                 onClick={() => this.deleteInvoice(props.original._id)}
-                            >Delete</button>
+                            >
+                                Delete
+                            </button>
                         </div>
                     );
-                }
-            }
+                },
+            },
         ];
 
         return (
             <div className="invoice-tab tab">
-                <h3>Invoices</h3>
-                <ReactTable 
+                <h4>Invoices</h4>
+                <ReactTable
                     data={invoices}
                     columns={columns}
                     showPagination={false}
-                    pageSize={(invoices.length > 10) ? 10 : invoices.length}
+                    pageSize={invoices.length}
                 />
             </div>
-        )
+        );
     }
 }

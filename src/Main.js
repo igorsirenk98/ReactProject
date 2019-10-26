@@ -7,11 +7,11 @@ import EditInvoiceView from './pages/EditInvoiceView';
 const Main = () => (
     <main>
         <Switch>
-            <Route exact path='/' component={MainView} />
-            <Route path='/creation' component={CreateInvoiceView} />
-            <Route path='/editing' component={EditInvoiceView} />
+            <Route exact path="/" component={MainView} />
+            <Route path="/creation" component={CreateInvoiceView} />
+            <Route path="/editing" component={EditInvoiceView} />
         </Switch>
     </main>
-)
+);
 
 export default Main;

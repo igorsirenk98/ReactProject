@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CreateInvoiceForm from '../components/CreateInvoiceForm';
 
-export default class CreateInvoiceView extends Component {
-    render() {
-        return (
-            <div>
-                <CreateInvoiceForm />
-            </div>
-        )
-    }
-}
+const CreateInvoiceView = () => (
+    <div>
+        <CreateInvoiceForm />
+    </div>
+);
+
+export default CreateInvoiceView;

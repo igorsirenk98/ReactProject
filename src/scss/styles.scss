@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
     padding: 0;
     margin: 0;
@@ -22,76 +24,78 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(202, 202, 202);
+    background-color: $body-color;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    -webkit-appearance: none;
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 30px auto;
     padding: 0 10px;
 }
 
 .button {
-    color: #fff;
-    padding: 10px 30px;
-    background-color: rgb(16, 145, 231);
+    color: $default-color;
+    background-color: $default-btn-bgcolor;
     border: none;
     border-radius: 5px;
-    margin: 5px 25px 5px 0;
-
-    &_add {
-        background-color: rgb(16, 145, 231);
-    }
+    margin: 5px 0;
+    cursor: pointer;
 
     &_edit {
-        background-color: rgb(230, 151, 5);
+        background-color: $edit-btn-bgcolor;
     }
 
     &_delete {
-        background-color: rgb(235, 8, 8);
+        background-color: $delete-btn-bgcolor;
+        padding: 10px 30px;
     }
 }
 
 .link {
-    color: #fff;
+    display: inline-block;
+    color: $default-color;
+    padding: 10px 30px;
 }
 
-.main-view {
-    margin: 30px 0;
+.title {
+    position: relative;
+    color: $title-color;
+    padding: 5px 10px;
+    border-left: 4px solid $title-border-color;
 
-    &__title {
-        position: relative;
-        color: rgb(170, 170, 170);
-        padding: 5px 10px;
-        border-left: 4px solid grey;
-
-        &:after {
-            position: absolute;
-            content: '';
-            height: 2px;
-            width: calc(100% - 130px);
-            background-color: rgb(170, 170, 170);
-            top: 50%;
-            margin-left: 10px;
-        }
+    &:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: calc(100% - 130px);
+        background-color: $title-horizontal-line-color;
+        top: 50%;
+        margin-left: 10px;
     }
 }
 
 .tab {
-    background-color: #fff;
+    background-color: $tab-bgcolor;
     padding: 25px;
-    border: 1px solid rgb(170, 170, 170);
+    border: 1px solid $tab-border-color;
     margin: 30px 0;
 }
 
 .ReactTable {
-    padding: 5px;
+    color: $table-color;
+    padding: 5px 0;
     border: none;
-    border-bottom: 2px solid rgb(170, 170, 170);
+    border-bottom: 2px solid $table-border-color;
 
     .rt-thead {
         &.-header {
-            background-color: rgb(202, 202, 202);
+            background-color: $table-header-bgcolor;
             box-shadow: none;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -104,14 +108,97 @@ body {
 
         .rt-td,
         .rt-th {
+            font-weight: bold;
             padding: 20px;
             box-shadow: none;
             border: none;
         }
     }
 
-    .rt-tbody .rt-tr-group {
-        padding: 12px 14px;
-        border: none;
+    .rt-tbody {
+        .rt-tr {
+            align-items: center;
+
+            &-group {
+                border: none;
+            }
+        }
+
+        .rt-td {
+            padding: 20px;
+            border: none;
+        }
+    }
+}
+
+.table-actions {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.invoice-form {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid $tab-border-color;
+    padding-bottom: 70px;
+    margin-top: 30px;
+
+    &__fieldset {
+        margin: 30px 15px;
+        padding: 20px;
+        border: 1px solid $fieldset-color;
+    }
+
+    &__button {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 30px;
+    }
+}
+
+.fieldset {
+    &__label {
+        width: 50%;
+        display: inline-block;
+        font-weight: bold;
+        margin-bottom: 25px;
+
+        &_textarea {
+            width: 102%;
+        }
+    }
+
+    &__input {
+        width: 96%;
+        height: 47px;
+        border: 1px solid $fieldset-color;
+        border-radius: 5px;
+        padding: 0 10px;
+        margin: 15px 0;
+        outline: none;
+
+        &:focus {
+            opacity: 1;
+            border: 1px solid darken($fieldset-color, 10%);
+        }
+
+        &_number {
+            opacity: 0.7;
+            background: url('../icons/settings.png') no-repeat 98% center;
+            background-size: 20px;
+        }
+
+        &_date {
+            opacity: 0.7;
+            background: url('../icons/calendar.png') no-repeat 98% center;
+            background-size: 20px;
+        }
+
+        &_textarea {
+            height: 56px;
+            padding: 10px;
+        }
     }
 }
